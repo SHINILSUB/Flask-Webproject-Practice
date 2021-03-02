@@ -32,7 +32,11 @@ def home():
 @app.route('/login')
 def login():
     msg = request.args.get("msg")
-    return render_template('login.html', msg=msg)
+    return render_template('02_login.html', msg=msg)
+
+@app.route('/map')
+def test_map():
+    return render_template('03_map.html')
 
 @app.route('/sign_in', methods=['POST'])
 def sign_in():
