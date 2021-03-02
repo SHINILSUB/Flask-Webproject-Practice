@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title> 모두의 산 | 지도 </title>
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q50dion4yx&submodules=geocoder"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <style>
+        .wrap {}
+
+        .banner {}
+
+        .matjip-list {}
+
+        #map {
+            width: 100%;
+            height: 50vh;
+            margin: 20px auto 20px auto;
+        }
+    </style>
+    <script>
+        let y_cen = 37.4981125   // lat
+        let x_cen = 127.0379399  // long
+        let map;
+        $(document).ready(function () {
+            map = new naver.maps.Map('map', {
+                center: new naver.maps.LatLng(y_cen, x_cen),
+                zoom: 12,
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: naver.maps.ZoomControlStyle.SMALL,
+                    position: naver.maps.Position.TOP_RIGHT
+                }
+            });
+            let marker = new naver.maps.Marker({
+                position: new naver.maps.LatLng(37.4981125, 127.0379399),
+                map: map
+            });
+            let infowindow = new naver.maps.InfoWindow({
+                content: `<div style="width: 50px;height: 20px;text-align: center"><h5>안녕!</h5></div>`,
+            });
+            infowindow.open(map, marker);
+            naver.maps.Event.addListener(marker, "click", function () {
+                console.log(infowindow.getMap()); // 정보창이 열려있을 때는 연결된 지도를 반환하고 닫혀있을 때는 null을 반환
+                if (infowindow.getMap()) {
+                    infowindow.close();
+                } else {
+                    infowindow.open(map, marker);
+                }
+            });
+        })
+    </script>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="banner"></div>
+        <div id="map"></div>
+
+        <div class="matjip-list" id="matjip-box">
+            <div class="card" id="card-0">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="#" class="matjip-title">혼가츠</a></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">일식</h6>
+                    <p class="card-text">서울 마포구 와우산로21길 36-6 (서교동)</p>
+                    <p class="card-text" style="color:blue;">생방송 투데이</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
