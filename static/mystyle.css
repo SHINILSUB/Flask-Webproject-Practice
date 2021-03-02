@@ -1,0 +1,19 @@
+.button.is-sparta {
+  background-color: #00af91;
+  border-color: transparent;
+  color: #fff !important;
+}
+
+.button.is-sparta.is-outlined {
+  background-color: transparent;
+  border-color: #00af91;
+  color: #00af91 !important;
+}
+
+.help {
+  color: gray;
+}
+
+.is-hidden {
+  display: none !important;
+}
