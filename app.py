@@ -32,11 +32,7 @@ def home():
 @app.route('/login')
 def login():
     msg = request.args.get("msg")
-    return render_template('02_login.html', msg=msg)
-
-@app.route('/map')
-def test_map():
-    return render_template('03_map.html')
+    return render_template('login.html', msg=msg)
 
 @app.route('/sign_in', methods=['POST'])
 def sign_in():
@@ -49,7 +45,7 @@ def sign_in():
 
     if result is not None:
         payload = {
-         'id': username_receive,
+        'id': username_receive,
          'exp': datetime.utcnow() + timedelta(seconds=60 * 60 * 24)  # 로그인 24시간 유지
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
