@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title> 산 넘어 산 </title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q50dion4yx&submodules=geocoder"></script>
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script> -->
+    <style>
+        body {
+            background: no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .wrap {
+            font-family: 'Noto Sans KR', sans-serif;
+            width: 100%;
+            margin: 0 auto;
+            background-color: #00AF91;
+        }
+
+        .banner {
+            width: 100%;
+            background-position: center;
+            background-size: contain;
+            background-repeat: repeat;
+
+        }
+
+        .login {
+            float: right;
+            font-size: 20px;
+            color: #f3f2da;
+            margin: 20px 40px 0 0;
+        }
+
+        .logo {
+            width: 50%;
+            margin: auto;
+        }
+
+        .subcomment {
+            font-size: 50px;
+            color: #f3f2da;
+            text-align: center;
+            margin-top: 20px;
+
+        }
+
+        .subcomment2 {
+            font-size: 30px;
+            color: #00AF91;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .mountain-search {
+            width: 350px;
+            margin: 100px auto 200px auto;
+        }
+
+        .mountain-input {
+            width: 50%;
+            height: 550px;
+            border-radius: 30px;
+            box-shadow: 2px 2px 2px gray;
+            background-color: #f3f2da;
+            border-color: #f3f2da;
+
+            text-align: center;
+            padding-top: 30px;
+            margin: 0 auto 200px auto;
+        }
+
+        .inputbox {
+            width: 85%;
+            height: 60px;
+            border-color: #f3f2da;
+
+            margin: 3px auto 8px auto;
+
+        }
+
+        .button {
+            width: 350px;
+            height: 100px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px gray;
+            background-color: #f3f2da;
+            border-color: #f3f2da;
+
+            color: #00AF91;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            padding: 40px auto 0 auto;
+            margin: 40px auto 100px auto;
+
+        }
+
+        .button-green {
+
+            width: 150px;
+            height: 60px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px gray;
+            background-color: #00AF91;
+            border-color: #00AF91;
+
+            color: #f3f2da;
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 50px;
+
+        }
+
+        .card-wrap {
+            width: 50%;
+            margin: auto;
+        }
+
+        .card {
+            width: 500px;
+            height: 1000px;
+            margin-top: 100px;
+
+            border-radius: 30px;
+            box-shadow: 2px 2px 2px gray;
+            background-color: #f3f2da;
+            border-color: #f3f2da;
+
+            padding: 20px auto 20px auto;
+        }
+
+        .card-img {
+            width: 400px;
+            margin-top: 20px;
+
+        }
+
+        .card-title {
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .card-text {
+            font-size: 35px;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+
+
+        #map {
+            width: 50%;
+            height: 850px;
+            margin: 70px auto 250px auto;
+        }
+    </style>
+    <script>
+        let y_cen = 37.4981125   // lat
+        let x_cen = 127.0379399  // long
+        let map;
+        $(document).ready(function () {
+            map = new naver.maps.Map('map', {
+                center: new naver.maps.LatLng(y_cen, x_cen),
+                zoom: 12,
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: naver.maps.ZoomControlStyle.SMALL,
+                    position: naver.maps.Position.TOP_RIGHT
+                }
+            });
+            let marker = new naver.maps.Marker({
+                position: new naver.maps.LatLng(37.4981125, 127.0379399),
+                map: map
+            });
+            let infowindow = new naver.maps.InfoWindow({
+                content: `<div style="width: 50px;height: 20px;text-align: center"><h5>안녕!</h5></div>`,
+            });
+            infowindow.open(map, marker);
+            naver.maps.Event.addListener(marker, "click", function () {
+                console.log(infowindow.getMap()); // 정보창이 열려있을 때는 연결된 지도를 반환하고 닫혀있을 때는 null을 반환
+                if (infowindow.getMap()) {
+                    infowindow.close();
+                } else {
+                    infowindow.open(map, marker);
+                }
+            });
+
+        })
+
+        // 코멘트 관련 기능
+        $(document).ready(function () {
+            showArticles();
+        });
+
+        function postArticle() {
+            let url = $('#post-url').val()
+            let comment = $('#post-comment').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/memo",
+                data: { url_give: url, comment_give: comment },
+                success: function (response) { // 성공하면
+                    alert(response["msg"]);
+                    window.location.reload()
+                }
+            })
+        }
+
+        function showArticles() {
+            $.ajax({
+                type: "GET",
+                url: "/memo",
+                data: {},
+                success: function (response) {
+                    let articles = response['all_articles']
+                    for (let i = 0; i < articles.length; i++) {
+                        let title = articles[i]['title']
+                        let image = articles[i]['image']
+                        let url = articles[i]['url']
+                        let desc = articles[i]['desc']
+                        let comment = articles[i]['comment']
+                        temp_html = `<div class="card">
+                                            <img class="card-img"
+                                                 src=${image}>
+                                            <div class="card-body">
+                                                <a target="_blank" href=${url} class="card-title">${title}</a>
+                                                <p class="card-text comment">${comment}</p>
+                                        </div>`
+                        $('#cards-box').append(temp_html)
+                    }
+                }
+            })
+        }
+
+
+
+    </script>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- 상단바 HTML -->
+        <div class="banner">
+            <a href="/login" class="login">로그인</a>
+            <center>
+                <div class="logo"><img src="../static/logo.png" class="logo"></div>
+            </center>
+            <p class="subcomment">당신의 산 위치를 찾아보세요!</p>
+        </div>
+        <!-- 지도 HTML (삭제 금지) -->
+        <div id="map"></div>
+
+        <!-- LINK FIND HTML -->
+        <p class="subcomment">당신의 산을 찾아보세요</p>
+        <div class="mountain-search">
+            <button href="https://100.daum.net/tag/292" class="button">url 가져오기</button>
+        </div>
+
+        <!-- LINK INPUT HTML -->
+        <p class="subcomment">함께 나누는 공간, 당신의 산을 알려주세요</p>
+        <div class="mountain-input">
+            <div class="url input">
+                <p class="subcomment2">URL</p>
+                <input class="inputbox" id="post-url">
+            </div>
+            <div class="comment-input">
+                <p class="subcomment2"> 코멘트</p>
+                <textarea class=" inputbox" id="post-comment"></textarea>
+            </div>
+            <button class="button-green" onclick="postArticle()">공유하기</button>
+        </div>
+        <p class="subcomment">사람들이 추천한 산들을 둘러보세요</p>
+
+
+        <!-- <p class="display-4">나홀로 링크 메모장!</p>
+            <div id="post-box" class="form-post">
+                <div>
+                    <div class="form-group">
+                        <label for="post-url">아티클 URL</label>
+                        <input id="post-url" class="form-control" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="post-comment">간단 코멘트</label>
+                        <textarea id="post-comment" class="form-control" rows="2"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="postArticle()">기사저장</button>
+                </div>
+            </div> -->
+        <div class="card-wrap">
+            <div id="cards-box" class="card-columns"></div>
+        </div>
+    </div>
+</body>
+
+</html>
