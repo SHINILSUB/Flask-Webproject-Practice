@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title> 산 넘어 산 </title>
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q50dion4yx&submodules=geocoder"></script>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -17,136 +23,516 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>진짜 산 아이</title>
-
-    <!-- Bulma CSS 링크 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <STYLE>
-        header {
-            display: flex;
-
-            background: #4e8d7c;
-        }
-
-        header .inner {
-
-            max-width: 980px;
-            height: 78px;
-            margin: 0 auto;
-
-        }
-
-        header .logo {
-
-            display: flex;
-            background: url("../statics/logo.png");
-            width: 65px;
-            height: 60px;
-            margin-left: 20px;
-            display: block;
-        }
-
-
-
-        .hero-body {
-            max-width: 980px;
-
-            margin: 0 auto;
-
-        }
-
-        .hero {
-
-            justify-content: center;
-            display: flex;
-            background-color: #4e8d7c;
-        }
-
-        .title {
-            color: white;
-        }
-
-        .subtitle {
-            color: white;
-
+        crossorigin="anonymous"></script> -->
+    <style>
+        body {
+            background: no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
         }
 
         .wrap {
-            width: 950px;
-            justify-content: center;
-            margin: auto;
+            font-family: 'Noto Sans KR', sans-serif;
+            width: 100%;
+            margin: 0 auto;
+            background-color: #00AF91;
+        }
+
+        .banner {
+            width: 100%;
+            background-position: center;
+            background-size: contain;
+            background-repeat: repeat;
 
         }
 
-        .card-filter-list-card {
-            width: 300px;
-            height: 150px;
-            border-radius: 20px;
+        .login {
+            float: right;
+            font-size: 15px;
+            color: #f3f2da;
+            margin: 20px 40px 0 0;
+        }
+
+        .logo {
+            width: 50%;
+            margin: auto;
+        }
+
+        .subcomment {
+            font-size: 25px;
+            color: #f3f2da;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+
+        }
+
+        .subcomment2 {
+            font-size: 15px;
+            color: #00AF91;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .mountain-search {
+            width: 150px;
+            margin: 50px auto 50px auto;
+        }
+
+        .mountain-input {
+            width: 40%;
+            height: 500px;
+            border-radius: 15px;
             box-shadow: 2px 2px 2px gray;
-            background-color: snow;
-            border-color: snow;
+            background-color: #f3f2da;
+            border-color: #f3f2da;
 
             text-align: center;
-            padding-top: 0px;
-            font-size: 20px;
-            font-weight: bold;
+            padding-top: 10px;
+            margin: 0 auto 100px auto;
         }
-    </STYLE>
+
+        .inputbox {
+            width: 85%;
+            height: 30px;
+            border-color: #f3f2da;
+
+            margin: 3px auto 8px auto;
+
+        }
+
+        .button {
+            width: 150px;
+            height: 40px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px gray;
+            background-color: #f3f2da;
+            border-color: #f3f2da;
+
+            color: #00AF91;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px auto 0 auto;
+            margin: 20px auto 50px auto;
+
+        }
+
+        .button-green {
+
+            width: 75px;
+            height: 30px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px gray;
+            background-color: #00AF91;
+            border-color: #00AF91;
+
+            color: #f3f2da;
+            font-size: 10px;
+            font-weight: bold;
+            margin-top: 25px;
+
+        }
+
+        .card-columns {
+            width: 80%;
+            margin: auto;
+        }
+
+        /* 카드 CSS 테스트 */
+
+        .card {
+
+            height: 400px;
+
+            width: 350px;
+
+            border-radius: 15px;
+
+            display: inline-block;
+
+            margin-top: 30px;
+
+            margin-left: 30px;
+
+            margin-bottom: 30px;
+
+            position: relative;
+
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+            overflow: hidden;
+
+        }
+
+
+
+        .card-header {
+
+            -webkit-transition: 0.5s;
+            /*사파리 & 크롬*/
+
+            transition: 0.5s;
+
+            width: 100%;
+
+            height: 270px;
+
+            border-radius: 15px 15px 0 0;
+
+            /* background-image: url("images/korea.jpeg"); */
+
+            background-size: 100% 280px;
+
+            background-repeat: no-repeat;
+
+        }
+
+
+
+        .card:hover .card-header {
+
+            opacity: 0.8;
+            height: 100px;
+        }
+
+
+
+        .card-header-is_closed {
+
+            background-color: #00AF91;
+
+            color: #FFF;
+
+            font-weight: bold;
+
+            text-align: center;
+
+            float: right;
+
+            margin: 15px 15px 0 0;
+
+            border-radius: 50%;
+
+            font-weight: bold;
+
+            padding: 10px 10px;
+
+            line-height: 20px;
+
+        }
+
+
+
+        h1 {
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+        }
+
+
+
+        .card-body {
+
+            background-color: #f3f2da;
+        }
+
+
+
+        .card-body-header {
+
+            line-height: 25px;
+
+            margin: 10px 20px 0px 20px;
+
+        }
+
+
+
+        .card-body-description {
+
+            opacity: 0;
+
+            color: #757B82;
+
+            line-height: 25px;
+
+            -webkit-transition: .2s ease-in-out;
+            /*사파리&크롬*/
+
+            transition: .2s ease-in-out;
+
+            overflow: hidden;
+
+            height: 180px;
+
+            margin: 5px 20px;
+
+        }
+
+
+
+        .card:hover .card-body-description {
+
+            opacity: 1;
+
+            -webkit-transition: .5s ease-in-out;
+
+            transition: .5s ease-in-out;
+
+            overflow: scroll;
+
+        }
+
+
+
+        .card-body-hashtag {
+
+            color: #2478FF;
+
+            font-style: italic;
+
+        }
+
+
+
+        .card-body-footer {
+
+            position: absolute;
+
+            margin-top: 15px;
+
+            margin-bottom: 6px;
+
+            bottom: 0;
+
+            width: 314px;
+
+            font-size: 14px;
+
+            color: #9FA5A8;
+
+            padding: 0 15px;
+
+        }
+
+
+        /* 카드 CSS 테스트 끝 */
+
+
+
+        #map {
+            width: 40%;
+            height: 350px;
+            margin: 35px auto 100px auto;
+        }
+    </style>
+    <script>
+        let y_cen = 37.4981125   // lat
+        let x_cen = 127.0379399  // long
+        let map;
+        $(document).ready(function () {
+            map = new naver.maps.Map('map', {
+                center: new naver.maps.LatLng(y_cen, x_cen),
+                zoom: 12,
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: naver.maps.ZoomControlStyle.SMALL,
+                    position: naver.maps.Position.TOP_RIGHT
+                }
+            });
+            let marker = new naver.maps.Marker({
+                position: new naver.maps.LatLng(37.4981125, 127.0379399),
+                map: map
+            });
+            let infowindow = new naver.maps.InfoWindow({
+                content: `<div style="width: 50px;height: 20px;text-align: center"><h5>안녕!</h5></div>`,
+            });
+            infowindow.open(map, marker);
+            naver.maps.Event.addListener(marker, "click", function () {
+                console.log(infowindow.getMap()); // 정보창이 열려있을 때는 연결된 지도를 반환하고 닫혀있을 때는 null을 반환
+                if (infowindow.getMap()) {
+                    infowindow.close();
+                } else {
+                    infowindow.open(map, marker);
+                }
+            });
+
+        })
+
+        // 코멘트 관련 기능
+        $(document).ready(function () {
+            showArticles();
+        });
+
+        function postArticle() {
+            let usertitle = $('#post-usertitle').val()
+            let user = $('#post-user').val()
+            let url = $('#post-url').val()
+            let comment = $('#post-comment').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/memo",
+                data: { usertitle_give: usertitle, user_give: user, url_give: url, comment_give: comment },
+                success: function (response) { // 성공하면
+                    alert(response["msg"]);
+                    window.location.reload()
+                }
+            })
+        }
+
+        function showArticles() {
+            $.ajax({
+                type: "GET",
+                url: "/memo",
+                data: {},
+                success: function (response) {
+                    let articles = response['all_articles']
+                    for (let i = 0; i < articles.length; i++) {
+                        let usertitle = articles[i]['usertitle']
+                        let title = articles[i]['title']
+                        let user = articles[i]['user']
+                        let image = articles[i]['image']
+                        let url = articles[i]['url']
+                        let desc = articles[i]['desc']
+                        let comment = articles[i]['comment']
+                        temp_html = `
+                        <div class="card">
+
+
+
+                            <!-- 카드 헤더 -->
+
+                            <div class="card-header" style="background-image: url(${image});">
+
+                                <div class="card-header-is_closed"> </div>
+
+                            </div>
+
+
+
+                            <!--  카드 바디 -->
+
+                            <div class="card-body">
+
+
+
+                                <!--  카드 바디 헤더 -->
+
+                                <div class="card-body-header">
+
+                                    <h1>${usertitle}</h1>
+
+                                    <a href="${url}" class="card-body-hashtag">${title}</a>
+
+                                    <p class="card-body-nickname">
+
+                                        작성자: ${user}
+
+                                    </p>
+
+                                </div>
+
+                                <p class="card-body-description">
+
+                                    ${comment}
+
+                                </p>
+
+                                <!--  카드 바디 본문 -->
+
+
+
+                                <!--  카드 바디 푸터 -->
+
+                                <div class="card-body-footer">
+
+                                    <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
+
+                                    <i class="icon icon-view_count"></i>
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                            </div>`
+
+                        $('#cards-box').append(temp_html)
+                    }
+                }
+            })
+        }
+
+
+
+    </script>
 
 </head>
 
 <body>
-    <header>
-        <div class="inner">
-            <div class="logo">
+    <div class="wrap">
+        <!-- 상단바 HTML -->
+        <div class="banner">
+            <a href="/login" class="login">로그인</a>
+            <center>
+                <div class="logo"><img src="../static/logo.png" class="logo"></div>
+            </center>
+            <p class="subcomment">동행을 구하고 싶다면?</p>
+            <p class="subcomment">먼저 산 위치를 찾아보세요!</p>
+        </div>
+        <!-- 지도 HTML (삭제 금지) -->
+        <div id="map"></div>
 
+        <!-- LINK FIND HTML -->
+        <p class="subcomment">동행들에게 제공할 산 정보가 필요하겠죠?</p>
+        <p class="subcomment">가고자 하는 산의 정보를 찾아보세요!</p>
+        <div class="mountain-search">
+            <button onclick='window.location.href = "https://100.daum.net/tag/292"' class="button">url 가져오기</button>
+        </div>
+
+        <!-- "https://100.daum.net/tag/292" -->
+
+        <!-- LINK INPUT HTML -->
+        <p class="subcomment">동행 모집 포스팅을 올려보아요!</p>
+        <div class="mountain-input">
+            <div class="url input">
+                <p class="subcomment2">제목</p>
+                <input class="inputbox" id="post-usertitle">
             </div>
-
-        </div>
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <a href="/login" class="navbar-item">
-                    로그인
-                </a>
-                <a class="navbar-item">
-                    마이페이지
-                </a>
-
+            <div class="url input">
+                <p class="subcomment2">사용자</p>
+                <input class="inputbox" id="post-user">
             </div>
+            <div class="url input">
+                <p class="subcomment2">산 정보 URL - URL 가져오기 이용</p>
+                <input class="inputbox" id="post-url">
+            </div>
+            <div class="comment-input">
+                <p class="subcomment2"> 코멘트</p>
+                <textarea class=" inputbox" id="post-comment"></textarea>
+            </div>
+            <button class="button-green" onclick="postArticle()">동행 구하기</button>
+        </div>
+        <p class="subcomment">지금 활발하게 동행 모집이 진행중이네요!</p>
+
+
+        <div id="cards-box" class="card-columns">
 
 
         </div>
-
-
-
-    </header>
-
-    <section class="hero">
-        <div class="hero-body">
-            <p class="title">
-                도전합니다! 진짜산 아이!
-            </p>
-            <p class="subtitle">
-                등산을 하기 전 기타 정보에 대한 것들을 열람할 수 있습니다.
-            </p>
-        </div>
-    </section>
-
-    <div class=wrap>
-        <button onclick='window.location.href = "/map"' class="card-filter-list-card">
-            <div class="icon">🤡</div>
-            <div class="sentence card-sentence">서울/경기도</div>
-            <div calss="location">6개의 장소</div>
-        </button>
     </div>
-
-
-
 </body>
 
 </html>
