@@ -431,7 +431,7 @@
 
                                     <h1>${usertitle}</h1>
 
-                                    <p href="${url}" class="card-body-hashtag">${title}</p>
+                                    <a href="${url}" class="card-body-hashtag">${title}</a>
 
                                     <p class="card-body-nickname">
 
@@ -499,8 +499,10 @@
         <p class="subcomment">동행들에게 제공할 산 정보가 필요하겠죠?</p>
         <p class="subcomment">가고자 하는 산의 정보를 찾아보세요!</p>
         <div class="mountain-search">
-            <button href="https://100.daum.net/tag/292" class="button">url 가져오기</button>
+            <button onclick='window.location.href = "https://100.daum.net/tag/292"' class="button">url 가져오기</button>
         </div>
+
+        <!-- "https://100.daum.net/tag/292" -->
 
         <!-- LINK INPUT HTML -->
         <p class="subcomment">동행 모집 포스팅을 올려보아요!</p>
