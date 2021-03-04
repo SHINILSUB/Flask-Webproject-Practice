@@ -100,6 +100,8 @@ def listing():
 ## API 역할을 하는 부분
 @app.route("/memo", methods=["POST"])
 def saving():
+    usertitle_receive = request.form["usertitle_give"]
+    user_receive = request.form["user_give"]
     url_receive = request.form["url_give"]
     comment_receive = request.form["comment_give"]
 
@@ -115,6 +117,8 @@ def saving():
     desc = soup.select_one('meta[property="og:description"]')["content"]
 
     doc = {
+        "usertitle": usertitle_receive,
+        "user": user_receive,
         "image": image,
         "title": title,
         "url": url_receive,
