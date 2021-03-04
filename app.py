@@ -41,6 +41,11 @@ def login():
     return render_template("02_login.html", msg=msg)
 
 
+@app.route("/is_logined")
+def is_logined():
+    return render_template("04_is_logined.html")
+
+
 @app.route("/sign_in", methods=["POST"])
 def sign_in():
     username_receive = request.form["username_give"]
@@ -85,49 +90,44 @@ def check_dup():
     return jsonify({"result": "success", "exists": exists})
 
 
-@app.route("/map")
-def test_map():
-    return render_template("03_map.html")
+# ## HTML을 주는 부분
+# @app.route("/memo", methods=["GET"])
+# def listing():
+#     articles = list(db.articles.find({}, {"_id": False}))
+#     return jsonify({"all_articles": articles})
 
 
-## HTML을 주는 부분
-@app.route("/memo", methods=["GET"])
-def listing():
-    articles = list(db.articles.find({}, {"_id": False}))
-    return jsonify({"all_articles": articles})
+# ## API 역할을 하는 부분
+# @app.route("/memo", methods=["POST"])
+# def saving():
+#     usertitle_receive = request.form["usertitle_give"]
+#     user_receive = request.form["user_give"]
+#     url_receive = request.form["url_give"]
+#     comment_receive = request.form["comment_give"]
 
+#     headers = {
+#         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36"
+#     }
+#     data = requests.get(url_receive, headers=headers)
 
-## API 역할을 하는 부분
-@app.route("/memo", methods=["POST"])
-def saving():
-    usertitle_receive = request.form["usertitle_give"]
-    user_receive = request.form["user_give"]
-    url_receive = request.form["url_give"]
-    comment_receive = request.form["comment_give"]
+#     soup = BeautifulSoup(data.text, "html.parser")
 
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36"
-    }
-    data = requests.get(url_receive, headers=headers)
+#     image = soup.select_one('meta[property="og:image"]')["content"]
+#     title = soup.select_one('meta[property="og:title"]')["content"]
+#     desc = soup.select_one('meta[property="og:description"]')["content"]
 
-    soup = BeautifulSoup(data.text, "html.parser")
+#     doc = {
+#         "usertitle": usertitle_receive,
+#         "user": user_receive,
+#         "image": image,
+#         "title": title,
+#         "url": url_receive,
+#         "desc": desc,
+#         "comment": comment_receive,
+#     }
+#     db.articles.insert_one(doc)
 
-    image = soup.select_one('meta[property="og:image"]')["content"]
-    title = soup.select_one('meta[property="og:title"]')["content"]
-    desc = soup.select_one('meta[property="og:description"]')["content"]
-
-    doc = {
-        "usertitle": usertitle_receive,
-        "user": user_receive,
-        "image": image,
-        "title": title,
-        "url": url_receive,
-        "desc": desc,
-        "comment": comment_receive,
-    }
-    db.articles.insert_one(doc)
-
-    return jsonify({"msg": "저장이 완료되었습니다."})
+#     return jsonify({"msg": "저장이 완료되었습니다."})
 
 
 if __name__ == "__main__":
