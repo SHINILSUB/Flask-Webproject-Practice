@@ -4,7 +4,7 @@
 <head>
 
     <!-- Webpage Title -->
-    <title>Log In | jinjja san</title>
+    <title>산 넘어 산 | 로그인</title>
     <meta property="og:title" content="진짜 산아이" />
     <meta property="og:description" content="mini project for hh99" />
 
@@ -30,11 +30,13 @@
         .title {
             font-weight: 800;
             font-size: 5rem;
-            font-family: 'Stylish', sans-serif;
+            /* font-family: 'Stylish', sans-serif; */
+            font-family: 'Noto Sans KR', sans-serif;
         }
 
         .subtitle {
-            font-family: 'Gamja Flower', cursive;
+            /* font-family: 'Gamja Flower', cursive; */
+            font-family: 'Noto Sans KR', sans-serif;
             font-size: 2rem;
 
         }
@@ -201,7 +203,7 @@
                     if (response['result'] == 'success') {
                         //JWT인증방식
                         $.cookie('mytoken', response['token'], { path: '/' });
-                        window.location.replace("/");
+                        window.location.replace("/is_logined");
                     } else {
                         alert(response['msg'])
                     }
